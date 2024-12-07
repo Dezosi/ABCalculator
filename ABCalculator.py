@@ -3,14 +3,26 @@ import tkinter as tk
 #Функция закрытия (do_close)
 def do_close():
     root.destroy()
+    
+#Функция считывания данных из полей ввода
+def do_processing():
+    n1 = int(entVisitors1.get())
+    c1 = int(entConversions1.get())
+    n2 = int(entVisitors2.get())
+    c2 = int(entConversions2.get())
+    
+    popup_window(n1, c1, n2, c2)
 
-def popup_window():
+def popup_window(n1, c1, n2, c2):
     window = tk.Toplevel()
     window.geometry("280x300")
     window.title("A/B результат")
     
     btnClosePopup = tk.Button(window, text="Закрыть", font = ('Helvetica', 10, 'bold' ), command=window.destroy)
     btnClosePopup.place(x=160, y=250, width=90, height=30)
+    
+    #Перевод фокуса на созданное окно
+    window.focus_force()
 
 #Главное окно
 root=tk.Tk()
