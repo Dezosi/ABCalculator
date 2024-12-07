@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import messagebox as mb
 
 #Функция закрытия (do_close)
 def do_close():
@@ -11,6 +12,12 @@ def do_processing():
     n2 = int(entVisitors2.get())
     c2 = int(entConversions2.get())
     
+    #Проверка данных из полей ввода
+    if n1<=0 or n2 <=0:
+        mb.showerror(title="ERROR", message="Неверное количество посетителей")
+        return
+    
+    #Открытие окна результатов
     popup_window(n1, c1, n2, c2)
 
 def popup_window(n1, c1, n2, c2):
@@ -72,7 +79,7 @@ entConversions2.place(x=115, y=205, width=90, height=20)
 entConversions2.insert(tk.END, '0')
 
 #Кнока "Рассчитать"
-btnProcess = tk.Button(root, text="Рассчитать", font = ('Helvetica', 10, 'bold' ), command=popup_window)
+btnProcess = tk.Button(root, text="Рассчитать", font = ('Helvetica', 10, 'bold' ), command=do_processing)
 btnProcess.place(x=25, y=250, width=90, height=30)
 
 # Добавление кнопки закрытия программы
